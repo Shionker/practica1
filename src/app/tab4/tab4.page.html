@@ -111,10 +111,13 @@
                   Geolocalización
                   <p>Latitud: {{lat}}</p>
                   <p>Longitud: {{lon}}</p>
+
                 </ion-title>
               </ion-navbar>
           </ion-item>
 
+        </ion-radio-group>
+        <ion-radio-group value="{{lat}},{{lon}}" formControlName="location" >
         </ion-radio-group>
       <br><br>
       <ion-grid>
