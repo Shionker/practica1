@@ -43,7 +43,7 @@ export class Tab4Page {
   ) {
 
     this.getGeolocation()
-    
+
     new Promise((resolve, reject) => {
       this.guard = this.auth.guardData()
      /*  console.table(this.guard) */
@@ -65,15 +65,41 @@ export class Tab4Page {
     this.geolocation.getCurrentPosition().then((geoposition: Geoposition)=>{
       this.lat = geoposition.coords.latitude;
       this.lon = geoposition.coords.longitude;
+      console.log(this.geolocation.getCurrentPosition());
+      //console.log(this.lat);
+      //console.log(this.lon);
+      //return this.lat+","+this.lon
+      
     });
   }
-  
+  /*
+  getGeolocationlat(){
+    this.geolocation.getCurrentPosition().then((geoposition: Geoposition)=>{
+      this.lat = geoposition.coords.latitude;
+      return this.lat.toString()
+      //return this.lat+","+this.lon
+    });
+  }
 
+  getGeolocationlon(){
+    this.geolocation.getCurrentPosition().then((geoposition: Geoposition)=>{
+      this.lon = geoposition.coords.longitude;
+      return this.lon.toString()
+      //return this.lat+","+this.lon
+    });
+  }
+  */
   createRegisterForm() {
+    //cambio 2
+    
+    
     return this.formBuilder.group({
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
-      shiftId: [this.guard.shiftId, Validators.required]
+      location: new FormControl('', Validators.required),
+      shiftId: [this.guard.shiftId, Validators.required],
+      //cambio 1
+      
     })
   }
   
@@ -106,6 +132,9 @@ export class Tab4Page {
   
 
   ngOninit() {
+
+    
+
     /* new Promise((resolve, reject) => {
       this.guard = this.auth.guardData()
       console.table(this.guard)
